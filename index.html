@@ -1,0 +1,1216 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Эрик Булатов — Избранные страницы</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;700;900&family=PT+Serif:ital,wght@0,400;1,400&display=swap" rel="stylesheet" />
+  <style>
+    /* =============================================
+       VARIABLES & RESET
+    ============================================= */
+    :root {
+      --red: #CC0000;
+      --red-dark: #990000;
+      --black: #0a0a0a;
+      --white: #F5F2EE;
+      --off-white: #EBEBEB;
+      --gray: #888;
+      --font-display: 'Bebas Neue', 'Arial Black', sans-serif;
+      --font-body: 'Montserrat', sans-serif;
+      --font-serif: 'PT Serif', Georgia, serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--white);
+      color: var(--black);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* =============================================
+       UTILITY
+    ============================================= */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .section-label {
+      font-family: var(--font-body);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 16px;
+    }
+
+    /* =============================================
+       HEADER / HERO
+    ============================================= */
+    header {
+      background: var(--black);
+      color: var(--white);
+      position: relative;
+      overflow: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .header-top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .header-top-bar .student-info {
+      color: var(--red);
+    }
+
+    .header-top-bar .exhibition-label {
+      color: rgba(255,255,255,0.4);
+    }
+
+    .hero {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 40px 40px 60px;
+      position: relative;
+    }
+
+    /* Big decorative background text */
+    .hero-bg-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: var(--font-display);
+      font-size: clamp(120px, 20vw, 280px);
+      color: rgba(204, 0, 0, 0.07);
+      white-space: nowrap;
+      letter-spacing: -0.02em;
+      pointer-events: none;
+      user-select: none;
+      z-index: 0;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+    }
+
+    .hero-eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--red);
+      font-weight: 700;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      display: inline-block;
+      width: 40px;
+      height: 2px;
+      background: var(--red);
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(36px, 6vw, 88px);
+      line-height: 0.95;
+      letter-spacing: 0.02em;
+      color: var(--white);
+      text-transform: uppercase;
+      margin-bottom: 32px;
+    }
+
+    .hero-title span {
+      color: var(--red);
+      display: block;
+    }
+
+    .hero-subtitle {
+      font-size: 13px;
+      color: rgba(255,255,255,0.5);
+      max-width: 560px;
+      line-height: 1.8;
+      border-left: 2px solid var(--red);
+      padding-left: 20px;
+    }
+
+    .hero-meta {
+      display: flex;
+      gap: 40px;
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .hero-meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .hero-meta-item .label {
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gray);
+    }
+
+    .hero-meta-item .value {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--white);
+    }
+
+    /* =============================================
+       HERO PHOTO GRID
+    ============================================= */
+    .hero-photos {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 3px;
+      height: 420px;
+    }
+
+    .hero-photos img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: grayscale(20%) contrast(1.05);
+      transition: filter 0.4s ease;
+    }
+
+    .hero-photos img:hover {
+      filter: grayscale(0%) contrast(1.1);
+    }
+
+    /* =============================================
+       NAV
+    ============================================= */
+    nav {
+      background: var(--red);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-inner {
+      display: flex;
+      gap: 0;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .nav-inner::-webkit-scrollbar { display: none; }
+
+    nav a {
+      color: var(--white);
+      text-decoration: none;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 16px 24px;
+      white-space: nowrap;
+      transition: background 0.2s;
+    }
+
+    nav a:hover {
+      background: var(--red-dark);
+    }
+
+    /* =============================================
+       SECTIONS — COMMON
+    ============================================= */
+    section {
+      padding: 100px 0;
+    }
+
+    .section-header {
+      margin-bottom: 60px;
+    }
+
+    .section-number {
+      font-family: var(--font-display);
+      font-size: 120px;
+      color: var(--off-white);
+      line-height: 1;
+      margin-bottom: -20px;
+      display: block;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(28px, 4vw, 56px);
+      text-transform: uppercase;
+      line-height: 1.05;
+      letter-spacing: 0.03em;
+      position: relative;
+    }
+
+    .section-title em {
+      color: var(--red);
+      font-style: normal;
+    }
+
+    /* =============================================
+       SECTION 1 — INTRO
+    ============================================= */
+    #intro {
+      background: var(--white);
+    }
+
+    .intro-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .intro-text p {
+      font-family: var(--font-serif);
+      font-size: 17px;
+      line-height: 1.9;
+      color: #222;
+      margin-bottom: 20px;
+    }
+
+    .intro-text p:first-of-type::first-letter {
+      font-family: var(--font-display);
+      font-size: 72px;
+      line-height: 0.8;
+      float: left;
+      margin-right: 8px;
+      color: var(--red);
+      margin-top: 8px;
+    }
+
+    .intro-photo-col {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .intro-photo-col img {
+      width: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .intro-photo-col img:first-child {
+      height: 340px;
+    }
+
+    .intro-photo-col img:last-child {
+      height: 220px;
+      filter: grayscale(10%);
+    }
+
+    .pull-quote {
+      margin: 40px 0;
+      padding: 24px 32px;
+      border-left: 4px solid var(--red);
+      background: var(--off-white);
+    }
+
+    .pull-quote p {
+      font-family: var(--font-display) !important;
+      font-size: 22px !important;
+      line-height: 1.3 !important;
+      color: var(--black) !important;
+      margin: 0 !important;
+    }
+
+    .pull-quote p::first-letter {
+      font-size: 22px !important;
+      float: none !important;
+      color: var(--black) !important;
+      margin: 0 !important;
+    }
+
+    /* =============================================
+       SECTION 2 — BLACK HALL
+    ============================================= */
+    #black-hall {
+      background: var(--black);
+      color: var(--white);
+      position: relative;
+      overflow: hidden;
+    }
+
+    #black-hall::before {
+      content: 'ЧЕРНЫЙ ЗАЛ';
+      position: absolute;
+      bottom: -20px;
+      right: -20px;
+      font-family: var(--font-display);
+      font-size: clamp(80px, 14vw, 200px);
+      color: rgba(255,255,255,0.03);
+      pointer-events: none;
+      white-space: nowrap;
+    }
+
+    #black-hall .section-number {
+      color: rgba(255,255,255,0.06);
+    }
+
+    #black-hall .section-title {
+      color: var(--white);
+    }
+
+    #black-hall .section-label {
+      color: var(--red);
+    }
+
+    .black-hall-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .black-hall-photos {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4px;
+    }
+
+    .black-hall-photos img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      display: block;
+      filter: grayscale(40%) brightness(0.85) contrast(1.1);
+      transition: filter 0.4s;
+    }
+
+    .black-hall-photos img:hover {
+      filter: grayscale(0%) brightness(1) contrast(1.05);
+    }
+
+    .black-hall-photos img.tall {
+      height: 100%;
+      grid-row: span 2;
+    }
+
+    .black-hall-text p {
+      font-family: var(--font-serif);
+      font-size: 16px;
+      line-height: 1.9;
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 20px;
+    }
+
+    .tag-box {
+      display: inline-block;
+      background: var(--red);
+      color: var(--white);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      margin-bottom: 24px;
+    }
+
+    /* =============================================
+       SECTION 3 — CURATORIAL
+    ============================================= */
+    #curatorial {
+      background: var(--white);
+    }
+
+    .curatorial-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .curatorial-text p {
+      font-family: var(--font-serif);
+      font-size: 17px;
+      line-height: 1.9;
+      color: #222;
+      margin-bottom: 20px;
+    }
+
+    .pages-visual {
+      background: var(--black);
+      padding: 40px;
+      color: var(--white);
+      position: relative;
+    }
+
+    .pages-visual h3 {
+      font-family: var(--font-display);
+      font-size: 32px;
+      color: var(--white);
+      margin-bottom: 24px;
+      letter-spacing: 0.05em;
+    }
+
+    .page-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .page-item:last-child { border-bottom: none; }
+
+    .page-num {
+      font-family: var(--font-display);
+      font-size: 36px;
+      color: var(--red);
+      min-width: 48px;
+    }
+
+    .page-title {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .page-desc {
+      font-size: 11px;
+      color: rgba(255,255,255,0.5);
+      margin-top: 2px;
+    }
+
+    .curatorial-photos {
+      margin-top: 32px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4px;
+    }
+
+    .curatorial-photos img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* =============================================
+       SECTION 4 — TEXT & SKY
+    ============================================= */
+    #text-sky {
+      background: var(--white);
+    }
+
+    .sky-banner {
+      background: var(--red);
+      color: var(--white);
+      padding: 20px 40px;
+      margin-bottom: 60px;
+      overflow: hidden;
+      white-space: nowrap;
+      position: relative;
+    }
+
+    .sky-banner-inner {
+      display: inline-block;
+      animation: marquee 18s linear infinite;
+      font-family: var(--font-display);
+      font-size: 28px;
+      letter-spacing: 0.1em;
+    }
+
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .text-sky-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+      margin-bottom: 60px;
+    }
+
+    .text-sky-text p {
+      font-family: var(--font-serif);
+      font-size: 17px;
+      line-height: 1.9;
+      color: #222;
+      margin-bottom: 20px;
+    }
+
+    .concept-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3px;
+    }
+
+    .concept-box {
+      padding: 32px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .concept-box.red {
+      background: var(--red);
+      color: var(--white);
+    }
+
+    .concept-box.black {
+      background: var(--black);
+      color: var(--white);
+    }
+
+    .concept-box h4 {
+      font-family: var(--font-display);
+      font-size: 28px;
+      letter-spacing: 0.05em;
+      line-height: 1.1;
+    }
+
+    .concept-box p {
+      font-size: 13px;
+      line-height: 1.7;
+      opacity: 0.85;
+    }
+
+    .full-width-photo {
+      width: 100%;
+      height: 480px;
+      object-fit: cover;
+      display: block;
+      margin: 60px 0;
+    }
+
+    /* =============================================
+       GALLERY STRIP
+    ============================================= */
+    .gallery-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 4px;
+      margin: 0 0 80px;
+    }
+
+    .gallery-strip img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+
+    .gallery-strip img:hover {
+      transform: scale(1.02);
+    }
+
+    /* =============================================
+       QUOTE BLOCK
+    ============================================= */
+    .big-quote {
+      background: var(--black);
+      color: var(--white);
+      padding: 80px 40px;
+      text-align: center;
+      margin: 0;
+    }
+
+    .big-quote blockquote {
+      font-family: var(--font-display);
+      font-size: clamp(24px, 4vw, 52px);
+      line-height: 1.15;
+      letter-spacing: 0.02em;
+      color: var(--white);
+      max-width: 900px;
+      margin: 0 auto 24px;
+    }
+
+    .big-quote blockquote em {
+      color: var(--red);
+      font-style: normal;
+    }
+
+    .big-quote cite {
+      font-size: 12px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+    }
+
+    /* =============================================
+       CONCLUSION
+    ============================================= */
+    #conclusion {
+      background: var(--white);
+    }
+
+    .conclusion-layout {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .conclusion-text p {
+      font-family: var(--font-serif);
+      font-size: 17px;
+      line-height: 1.9;
+      color: #222;
+      margin-bottom: 20px;
+    }
+
+    .conclusion-aside {
+      position: sticky;
+      top: 80px;
+    }
+
+    .conclusion-aside img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    /* =============================================
+       TICKET SECTION
+    ============================================= */
+    #ticket {
+      background: var(--off-white);
+      padding: 80px 0;
+    }
+
+    .ticket-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .ticket-img-wrap {
+      position: relative;
+    }
+
+    .ticket-img-wrap img {
+      width: 100%;
+      display: block;
+      box-shadow: 8px 8px 0 var(--red), 16px 16px 0 var(--black);
+    }
+
+    .ticket-info h2 {
+      font-family: var(--font-display);
+      font-size: 48px;
+      letter-spacing: 0.05em;
+      line-height: 1.1;
+      margin-bottom: 24px;
+    }
+
+    .ticket-info h2 span { color: var(--red); }
+
+    .ticket-detail {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+
+    .ticket-row {
+      display: flex;
+      gap: 16px;
+      align-items: baseline;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+    }
+
+    .ticket-row .t-label {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gray);
+      min-width: 80px;
+    }
+
+    .ticket-row .t-value {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--black);
+    }
+
+    /* =============================================
+       FOOTER
+    ============================================= */
+    footer {
+      background: var(--black);
+      color: rgba(255,255,255,0.4);
+      padding: 48px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    footer .footer-title {
+      font-family: var(--font-display);
+      font-size: 22px;
+      color: var(--white);
+      letter-spacing: 0.05em;
+      margin-bottom: 4px;
+    }
+
+    footer .footer-sub {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+    }
+
+    footer .footer-right {
+      text-align: right;
+      font-size: 11px;
+    }
+
+    footer .footer-right strong {
+      display: block;
+      color: var(--red);
+      font-size: 13px;
+      margin-bottom: 4px;
+    }
+
+    footer .red-line {
+      width: 100%;
+      height: 4px;
+      background: var(--red);
+      margin-top: 32px;
+    }
+
+    /* =============================================
+       RESPONSIVE
+    ============================================= */
+    @media (max-width: 900px) {
+      .header-top-bar { padding: 16px 20px; }
+      .hero { padding: 20px 20px 40px; }
+      .hero-photos {
+        grid-template-columns: 1fr 1fr;
+        height: 280px;
+      }
+      .hero-photos img:first-child {
+        grid-column: span 2;
+      }
+
+      nav a { padding: 14px 16px; font-size: 9px; }
+
+      section { padding: 60px 0; }
+
+      .intro-layout,
+      .black-hall-layout,
+      .curatorial-layout,
+      .text-sky-layout,
+      .conclusion-layout,
+      .ticket-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery-strip { grid-template-columns: repeat(2, 1fr); }
+
+      .concept-grid { grid-template-columns: 1fr; }
+
+      footer { flex-direction: column; text-align: center; }
+      footer .footer-right { text-align: center; }
+
+      .big-quote { padding: 60px 20px; }
+
+      .sky-banner { padding: 16px 20px; }
+    }
+
+    @media (max-width: 600px) {
+      .hero-title { font-size: 36px; }
+      .hero-meta { flex-direction: column; gap: 16px; }
+      .hero-photos { height: 220px; }
+      .black-hall-photos { grid-template-columns: 1fr; }
+      .black-hall-photos img.tall { grid-row: span 1; height: 220px; }
+      .curatorial-photos { grid-template-columns: 1fr; }
+      .full-width-photo { height: 280px; }
+      .gallery-strip { grid-template-columns: 1fr; }
+      .ticket-img-wrap img { box-shadow: 4px 4px 0 var(--red), 8px 8px 0 var(--black); }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-top-bar">
+    <span class="student-info">Евстифеев Глеб · 24ИЖ1</span>
+    <span class="exhibition-label">Зачётный проект · Культурология · 2026</span>
+  </div>
+
+  <div class="hero">
+    <div class="hero-bg-text">БУЛАТОВ</div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">Первая посмертная выставка · РОСИЗО · Москва</div>
+      <h1 class="hero-title">
+        Пространство,<br>запертое в словах:
+        <span>Как Эрик Булатов взламывает<br>советский плакат</span>
+      </h1>
+      <p class="hero-subtitle">
+        Репортаж о выставке «Эрик Булатов. Избранные страницы» в историческом особняке РОСИЗО
+        в Петроверигском переулке. Посещение: 17 мая 2026 года.
+      </p>
+      <div class="hero-meta">
+        <div class="hero-meta-item">
+          <span class="label">Дата посещения</span>
+          <span class="value">17.05.2026</span>
+        </div>
+        <div class="hero-meta-item">
+          <span class="label">Место</span>
+          <span class="value">РОСИЗО, Москва</span>
+        </div>
+        <div class="hero-meta-item">
+          <span class="label">Художник</span>
+          <span class="value">Эрик Булатов</span>
+        </div>
+        <div class="hero-meta-item">
+          <span class="label">Куратор</span>
+          <span class="value">Алина Корень</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-photos">
+    <img src="IMG_2915.jpg" alt="Вход в РОСИЗО, Петроверигский переулок — фасад особняка" />
+    <img src="IMG_2916.jpg" alt="Экспозиция выставки Эрика Булатова — общий вид зала" />
+    <img src="IMG_2917.jpg" alt="Картина Эрика Булатова крупным планом" />
+  </div>
+</header>
+
+<nav>
+  <div class="nav-inner container">
+    <a href="#intro">Введение</a>
+    <a href="#black-hall">Чёрный зал</a>
+    <a href="#curatorial">Архитектура восприятия</a>
+    <a href="#text-sky">Текст и небо</a>
+    <a href="#conclusion">Итог</a>
+    <a href="#ticket">Билет</a>
+  </div>
+</nav>
+
+<section id="intro">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-number">01</span>
+      <p class="section-label">Введение</p>
+      <h2 class="section-title">Оптический и смысловой <em>шок</em></h2>
+    </div>
+
+    <div class="intro-layout">
+      <div class="intro-text">
+        <p>
+          Каждый раз, сталкиваясь с монументальным искусством, мы ожидаем, что оно подавит нас своим масштабом. Но когда я переступил порог исторического особняка РОСИЗО в Петроверигском переулке, где открылась первая посмертная выставка Эрика Булатова «Избранные страницы», меня накрыло совершенно иное чувство. [cite: 3, 4]
+        </p>
+        <p>
+          Это был не груз монументальности, а оптический и смысловой шок. [cite: 5] Главный вопрос, который пульсировал в моей голове, пока я переходил от холста к холсту: как плоское, агрессивное, рубленое слово способно разорвать трёхмерное пространство картины — или, наоборот, взять его в жёсткие тиски? [cite: 6]
+        </p>
+        <div class="pull-quote">
+          <p>Как плоское слово берёт в тиски трёхмерное пространство?</p>
+        </div>
+        <p>
+          Булатов, ушедший из жизни в ноябре 2025 года в Париже в возрасте 92 лет, оставил нам сложнейшую визуальную вселенную. [cite: 7] Этот камерный, но невероятно ёмкий проект-дайджест — не просто набор картин, а ключи к дешифровке его философии. [cite: 8]
+        </p>
+      </div>
+
+      <div class="intro-photo-col">
+        <img src="IMG_2918.jpg" alt="Интерьер выставочного зала РОСИЗО — картины Булатова на стенах" />
+        <img src="IMG_2920.jpg" alt="Концептуальная работа Эрика Булатова — текст на живописном фоне" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="black-hall">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-number">02</span>
+      <p class="section-label">Двойная оптика</p>
+      <h2 class="section-title">Детские сказки vs <em>концептуальный эскапизм</em></h2>
+    </div>
+
+    <div class="black-hall-layout">
+      <div class="black-hall-text">
+        <span class="tag-box">Чёрный зал</span>
+        <p>
+          Чтобы понять природу булатовского парадокса, нужно посмотреть на контекст его формирования. [cite: 10] Выпускник Суриковского института, Булатов долгие годы вёл двойную творческую жизнь. [cite: 11] Полгода, в холодный сезон, он работал над оформлением детских книг вместе со своим неизменным соавтором и другом Олегом Васильевым. [cite: 12]
+        </p>
+        <p>
+          На выставке этот период проиллюстрирован с пронзительной честностью: детские иллюстрации к «Золушке», «Коту в сапогах» и «Коньку-горбунку» помещены в так называемый «чёрный зал». [cite: 14] Булатов, унаследовавший от своего учителя Владимира Фаворского принцип «белый — добро, а чёрный — зло», воспринимал эту поденщину как компромисс с советской реальностью. [cite: 15]
+        </p>
+        <p>
+          В академической среде Булатова часто относят к соц-арту, указывая на его работу с узнаваемыми символами и шрифтами. [cite: 17] Однако сам он категорически отвергал этот ярлык, подчёркивая, что соц-арт строится на иронии, которой в его работах нет. [cite: 18] Его интересовал экзистенциальный выход за пределы социального пространства — полное освобождение. [cite: 19]
+        </p>
+      </div>
+
+      <div class="black-hall-photos">
+        <img class="tall" src="IMG_2924.jpg" alt="Чёрный зал выставки — иллюстрации к советским детским книгам" />
+        <img src="IMG_2925.jpg" alt="Иллюстрации Булатова к сказке «Кот в сапогах»" />
+        <img src="IMG_2926.jpg" alt="Иллюстрации Булатова к «Золушке» и «Коньку-горбунку»" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="curatorial">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-number">03</span>
+      <p class="section-label">Архитектура восприятия</p>
+      <h2 class="section-title">Ламповый <em>кураторский жест</em></h2>
+    </div>
+
+    <div class="curatorial-layout">
+      <div class="curatorial-text">
+        <p>
+          Куратор выставки Алина Корень выстроила экспозицию удивительно деликатно. [cite: 22] Вместо того чтобы перегружать зрителя диджитал-костылями вроде бесконечных QR-кодов, здесь реализовано невероятно «ламповое» решение. [cite: 22]
+        </p>
+        <p>
+          На входе тебе выдают специальную папку, в которую ты по мере прохождения залов собираешь раздаточный материал — «избранные страницы». [cite: 23] Эти страницы содержат размышления самого художника: «О поверхности», «О цвете», «О зрителе». [cite: 24] Ты буквально собираешь выставку своими руками, сопоставляя текст с визуальным воплощением. [cite: 25]
+        </p>
+        <p>
+          Этот жест блестяще рифмуется с булатовской концепцией взаимодействия с текстом. [cite: 26] Художник делил слова на «чужие» — агрессивные, рождённые эпохой, вроде «Слава КПСС» или «Опасно!» — и «свои», возникающие в сознании. [cite: 27] К последним относились строки его близкого друга, поэта-концептуалиста Всеволода Некрасова. [cite: 28]
+        </p>
+
+        <div class="curatorial-photos">
+          <img src="IMG_2928.jpg" alt="Кураторская папка с избранными страницами — раздаточный материал выставки" />
+          <img src="IMG_2929.jpg" alt="Страницы с текстами Булатова «О поверхности» и «О цвете»" />
+        </div>
+      </div>
+
+      <div>
+        <div class="pages-visual">
+          <h3>Избранные страницы</h3>
+          <div class="page-item">
+            <span class="page-num">I</span>
+            <div>
+              <div class="page-title">О поверхности</div>
+              <div class="page-desc">Картина как плоскость и как окно</div>
+            </div>
+          </div>
+          <div class="page-item">
+            <span class="page-num">II</span>
+            <div>
+              <div class="page-title">О цвете</div>
+              <div class="page-desc">Красный — барьер. Белый — свобода</div>
+            </div>
+          </div>
+          <div class="page-item">
+            <span class="page-num">III</span>
+            <div>
+              <div class="page-title">О зрителе</div>
+              <div class="page-desc">Диалог не со зрителем, а с картиной</div>
+            </div>
+          </div>
+          <div class="page-item">
+            <span class="page-num">IV</span>
+            <div>
+              <div class="page-title">О слове</div>
+              <div class="page-desc">Свои и чужие слова</div>
+            </div>
+          </div>
+          <div class="page-item">
+            <span class="page-num">V</span>
+            <div>
+              <div class="page-title">О Некрасове</div>
+              <div class="page-desc">Поэзия как «своё» слово</div>
+            </div>
+          </div>
+        </div>
+
+        <img src="IMG_2931.jpg" alt="Белый зал с концептуальными полотнами Булатова" style="width:100%;height:240px;object-fit:cover;display:block;margin-top:4px;" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="big-quote">
+  <blockquote>
+    «<em>Свет</em> — это моя вера. За глухой тьмой социального диктата всегда брезжит <em>божественный свет</em>» [cite: 36]
+  </blockquote>
+  <cite>— Эрик Булатов</cite>
+</div>
+
+<section id="text-sky">
+  <div class="sky-banner">
+    <div class="sky-banner-inner">
+      СЛАВА КПСС &nbsp;·&nbsp; ОПАСНО &nbsp;·&nbsp; СВОБОДА &nbsp;·&nbsp; СЛАВА КПСС &nbsp;·&nbsp; ОПАСНО &nbsp;·&nbsp; СВОБОДА &nbsp;·&nbsp; СЛАВА КПСС &nbsp;·&nbsp; ОПАСНО &nbsp;·&nbsp; СВОБОДА &nbsp;·&nbsp; СЛАВА КПСС &nbsp;·&nbsp; ОПАСНО &nbsp;·&nbsp; СВОБОДА &nbsp;·&nbsp;
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="section-header">
+      <span class="section-number">04</span>
+      <p class="section-label">Текст как барьер, небо как абсолют</p>
+      <h2 class="section-title">Железная решётка <em>букв</em></h2>
+    </div>
+
+    <div class="text-sky-layout">
+      <div class="text-sky-text">
+        <p>
+          Кульминация моего журналистского и эстетического восторга произошла в белых залах, где размещены концептуальные полотна. [cite: 30] Работы Булатова кажутся обманчиво знакомыми, маскируясь под плакатную графику. [cite: 31] Но стоит задержаться перед ними чуть дольше, как зрение начинает играть с тобой в сложную игру. [cite: 31]
+        </p>
+        <p>
+          Для Булатова красный цвет советских лозунгов был максимально плоским, агрессивным, не проникающим вглубь картины, а выталкивающим зрителя. [cite: 32] В его работах текст становится железной решёткой, архитектурным барьером. [cite: 33] Буквы не изображают слова — они фиксируют их тяжёлое, давящее движение в пространстве. [cite: 33]
+        </p>
+        <p>
+          Особенно мощно этот конфликт плоскости и глубины раскрывается при сопоставлении с пейзажем. [cite: 34] Художник сталкивает материальную поверхность — идеологию, плакат, ограничение — и воображаемый мир, свободу, небо. [cite: 35] Небо у Булатова — это всегда прорыв. [cite: 35] Социальное пространство имеет жёсткую границу, а истинная свобода находится за ней. [cite: 37]
+        </p>
+        <p>
+          Совершенно иначе строится контакт в работе «Картина и зрители» (2012). [cite: 38] Булатов берёт хрестоматийный сюжет ивановского «Явления Христа народу» и вводит на первый план современную экскурсионную группу. [cite: 39] Стирая границу между нами и холстом, он воплощает свою идею: «У меня диалог не со зрителем, а с картиной. Я и есть зритель, пытающийся войти в нарисованное пространство». [cite: 40, 41]
+        </p>
+      </div>
+
+      <div class="concept-grid">
+        <div class="concept-box red">
+          <h4>Текст / Плоскость</h4>
+          <p>Красные буквы — железная решётка. Слово давит, выталкивает, запирает. Идеология как архитектурный барьер. [cite: 33]</p>
+        </div>
+        <div class="concept-box black">
+          <h4>Небо / Глубина</h4>
+          <p>За плоскостью плаката — бесконечная перспектива. Свет как вера. Прорыв за пределы социального диктата. [cite: 35, 36]</p>
+        </div>
+        <div class="concept-box black" style="grid-column:span 2;">
+          <h4>«Картина и зрители» (2012)</h4>
+          <p>Иванов переосмыслен: современная экскурсионная группа перед «Явлением Христа». Граница между нами и холстом стёрта. [cite: 39, 40]</p>
+        </div>
+      </div>
+    </div>
+
+    <img class="full-width-photo" src="IMG_2934.jpg" alt="Концептуальные полотна Булатова в белом зале — красные лозунги на фоне пейзажа" />
+
+    <div class="gallery-strip">
+      <img src="IMG_2915.jpg" alt="Деталь выставки — плакатный шрифт Булатова" />
+      <img src="IMG_2916.jpg" alt="Зрители перед картинами Эрика Булатова" />
+      <img src="IMG_2917.jpg" alt="Экспозиция — взаимодействие текста и живописного пространства" />
+      <img src="IMG_2918.jpg" alt="Белый зал РОСИЗО — концептуальные работы" />
+    </div>
+  </div>
+</section>
+
+<section id="conclusion">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-number">05</span>
+      <p class="section-label">Итог</p>
+      <h2 class="section-title">Актуальность, пробивающая <em>время</em></h2>
+    </div>
+
+    <div class="conclusion-layout">
+      <div class="conclusion-text">
+        <p>
+          Стоя перед картинами Эрика Булатова, я испытывал почти физическое ощущение того, как визуальная иллюзия ломает привычное восприятие реальности. [cite: 43] Этот художественный язык, сформированный в условиях советской несвободы, сегодня, в 2026 году, звучит пугающе остро. [cite: 44]
+        </p>
+        <p>
+          Мы снова живём в мире, перенасыщенном символикой, агрессивными цветами и чужими словами, которые пытаются заслонить от нас горизонт. [cite: 45] Уходя из РОСИЗО с картонной папкой собранных текстов, я уносил с собой главное открытие этой выставки. [cite: 46]
+        </p>
+        <p>
+          Булатов не просто задокументировал абсурдность перенасыщенной пропагандой действительности. Он подарил нам терапевтический метод: как бы плотно агрессивные буквы ни перекрывали перспективу, за ними всегда скрывается безграничное, свободное пространство. [cite: 47]
+        </p>
+        <div class="pull-quote">
+          <p>Нужно только не забывать вглядываться в глубь.</p>
+        </div>
+      </div>
+
+      <div class="conclusion-aside">
+        <img src="IMG_2920.jpg" alt="Фото автора у выставки Эрика Булатова" />
+        <img src="IMG_2926.jpg" alt="Последний взгляд на экспозицию РОСИЗО" style="width:100%;height:200px;object-fit:cover;display:block;" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="ticket">
+  <div class="container">
+    <div class="ticket-layout">
+      <div class="ticket-img-wrap">
+        <img src="POC.jpg" alt="Билет на выставку «Эрик Булатов. Избранные страницы» — РОСИЗО, 17.05.2026, 200 руб." />
+      </div>
+      <div class="ticket-info">
+        <h2>Документ<br>посещения<br><span>РОСИЗО</span></h2>
+        <div class="ticket-detail">
+          <div class="ticket-row">
+            <span class="t-label">Выставка</span>
+            <span class="t-value">«Эрик Булатов. Избранные страницы»</span>
+          </div>
+          <div class="ticket-row">
+            <span class="t-label">Дата</span>
+            <span class="t-value">17.05.2026 · 13:00</span>
+          </div>
+          <div class="ticket-row">
+            <span class="t-label">Стоимость</span>
+            <span class="t-value">200 рублей</span>
+          </div>
+          <div class="ticket-row">
+            <span class="t-label">Билет</span>
+            <span class="t-value">530130557764</span>
+          </div>
+          <div class="ticket-row">
+            <span class="t-label">Серия РО №</span>
+            <span class="t-value">091617</span>
+          </div>
+          <div class="ticket-row">
+            <span class="t-label">Место</span>
+            <span class="t-value">Петроверигский пер., Москва</span>
+          </div>
+        </div>
+        <p style="font-size:11px;color:var(--gray);line-height:1.6;">
+          Зачётный проект по культурологии.<br>
+          Студент: <strong>Евстифеев Глеб</strong> · Группа <strong>24ИЖ1</strong>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div>
+    <div class="footer-title">Эрик Булатов. Избранные страницы</div>
+    <div class="footer-sub">Зачётный проект по культурологии · 2026</div>
+  </div>
+  <div class="footer-right">
+    <strong>Евстифеев Глеб · 24ИЖ1</strong>
+    Посещение выставки: 17.05.2026<br>
+    РОСИЗО, Петроверигский пер., Москва
+  </div>
+  <div class="red-line"></div>
+</footer>
+
+</body>
+</html>
